@@ -19,19 +19,31 @@ def left(s, amount):
     return s[:amount]
 
 
-def most_frequent(lista2):
+def most_frequent(lista2, column):  # counter is for current column
+    common_list = []
     for item in transpose(lista2):
-        common = Counter(item).most_common()
-        return common[0][0]
+        common,  = Counter(item).most_common()
+        common_list.append(common)
+    return common_list[column][0][0]  # returns most frequent number
 
 
 gamma = ''
 epsilon = ''
-cipher = "0"  # do tego bedziemy dodawac kolejne bity
+cipher = ""  # do tego bedziemy dodawac kolejne bity
+
+# print(lines)
+# print(transpose(lines))
+#print(most_frequent(lines, 0))
+
+for item in range(0, 5):
+    column = item
+    cipher += most_frequent(lines, column)
+    for item in lines:
+        if left(item, column+1) == cipher:
+            lines2 = []
+            lines2.append(item)
+#    print(lines2)
 
 
-lines2 = []
-for item in lines:
-    if left(item, 1) == cipher:
-        lines2.append(item)
-        # print(lines2)
+# print(lines2)
+# print(cipher)
