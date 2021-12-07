@@ -1,7 +1,7 @@
 lines = []
 with open(r"C:\Source\Dive.txt") as file:
     for line in file:
-        line = line.strip()  # or some other preprocessing
+        line = line.strip()
         lines.append(line)
 
 depth = 0
